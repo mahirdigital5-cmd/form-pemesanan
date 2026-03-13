@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Pemesanan Tas Travel</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+padding:20px;
+}
+
+.box{
+background:white;
+padding:30px 24px;
+border-radius:16px;
+box-shadow:0 12px 35px rgba(0,0,0,0.7);
+width:100%;
+max-width:480px;
+}
+
+.title{
+font-size:20px;
+font-weight:bold;
+text-align:center;
+margin-bottom:15px;
+}
+
+input, select, textarea{
+width:100%;
+padding:16px;
+margin-top:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+textarea{
+min-height:80px;
+resize:none;
+}
+
+button{
+margin-top:22px;
+width:100%;
+padding:18px;
+background:#25D366;
+border:none;
+color:white;
+font-weight:bold;
+border-radius:10px;
+cursor:pointer;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="title">
+📦 Form Pemesanan Tas Travel
+</div>
+
+<select id="produk">
+<option value="">Pilih Produk</option>
+<option value="Tas Travel Pink">Tas Travel - Pink</option>
+<option value="Tas Travel Hitam">Tas Travel - Hitam</option>
+</select>
+
+<input type="number" id="jumlah" placeholder="Jumlah" value="1">
+
+<select id="pembayaran">
+<option value="">Metode Pembayaran</option>
+<option value="Cash on Delivery">Cash on Delivery</option>
+<option value="Transfer Bank">Transfer Bank</option>
+</select>
+
+<input type="text" id="nama" placeholder="Nama Penerima">
+
+<input type="text" id="wa" placeholder="No WhatsApp Aktif">
+
+<input type="text" id="jalan" placeholder="Nama Jalan">
+
+<input type="text" id="rt" placeholder="RT">
+
+<input type="text" id="rumah" placeholder="No Rumah">
+
+<input type="text" id="kelurahan" placeholder="Kelurahan / Desa">
+
+<input type="text" id="kecamatan" placeholder="Kecamatan">
+
+<input type="text" id="kota" placeholder="Kota / Kabupaten">
+
+<input type="text" id="provinsi" placeholder="Provinsi">
+
+<textarea id="catatan" placeholder="Catatan Rumah / Patokan"></textarea>
+
+<button onclick="kirimWA()">Kirim Pesanan</button>
+
+</div>
+
+<script>
+
+function kirimWA(){
+
+var produk=document.getElementById("produk").value;
+var jumlah=document.getElementById("jumlah").value;
+var pembayaran=document.getElementById("pembayaran").value;
+
+var nama=document.getElementById("nama").value;
+var wa=document.getElementById("wa").value;
+
+var jalan=document.getElementById("jalan").value;
+var rt=document.getElementById("rt").value;
+var rumah=document.getElementById("rumah").value;
+
+var kel=document.getElementById("kelurahan").value;
+var kec=document.getElementById("kecamatan").value;
+var kota=document.getElementById("kota").value;
+var prov=document.getElementById("provinsi").value;
+
+var catatan=document.getElementById("catatan").value;
+
+if(produk==""||pembayaran==""||nama==""||wa==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""){
+alert("Mohon isi data dengan lengkap ya kak 😊");
+return;
+}
+
+var alamat=
+jalan+"%0A"+
+"RT "+rt+"%0A"+
+"No Rumah "+rumah;
+
+var pesan=
+"Halo, saya sudah melakukan pemesanan%0A%0A"+
+"*Nama Lengkap:* "+nama+"%0A"+
+"*No. WA Aktif:* "+wa+"%0A%0A"+
+"*Alamat Pengiriman:*%0A"+
+alamat+"%0A"+
+"Kelurahan: "+kel+"%0A"+
+"Kecamatan: "+kec+"%0A"+
+"Kab/Kota: "+kota+"%0A"+
+"Provinsi: "+prov+"%0A%0A"+
+"*Detail Produk:*%0A"+
+"- "+produk+" x"+jumlah+"%0A%0A"+
+"📦 *Metode Pembayaran:* "+pembayaran+"%0A"+
+"💰 *Total Harga:* Rp 169.000%0A%0A"+
+"Mohon segera diproses ya 🙏";
+
+var url="https://api.whatsapp.com/send?phone=15558770694&text="+pesan;
+
+window.location.href=url;
+
+}
+
+</script>
+
+</body>
+</html>
