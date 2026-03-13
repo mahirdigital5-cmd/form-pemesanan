@@ -92,9 +92,9 @@ font-size:18px;
 
 <input type="text" id="jalan" placeholder="Nama Jalan (contoh: JL.Anggrek)">
 
-<input type="text" id="rt" placeholder="RT">
+<input type="number" id="rt" placeholder="RT (hanya angka)">
 
-<input type="text" id="rumah" placeholder="No Rumah">
+<input type="number" id="rumah" placeholder="No Rumah (hanya angka)">
 
 <input type="text" id="kelurahan" placeholder="Kelurahan / Desa">
 
@@ -119,7 +119,6 @@ var jumlah=document.getElementById("jumlah").value;
 var pembayaran=document.getElementById("pembayaran").value;
 
 var nama=document.getElementById("nama").value;
-var wa=document.getElementById("wa").value;
 
 var jalan=document.getElementById("jalan").value;
 var rt=document.getElementById("rt").value;
@@ -132,8 +131,13 @@ var prov=document.getElementById("provinsi").value;
 
 var catatan=document.getElementById("catatan").value;
 
-if(produk==""||pembayaran==""||nama==""||wa==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""){
+if(produk==""||pembayaran==""||nama==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""){
 alert("Mohon isi data dengan lengkap ya kak 😊");
+return;
+}
+
+if(isNaN(rt) || isNaN(rumah)){
+alert("RT dan No Rumah harus berupa angka ya kak");
 return;
 }
 
@@ -144,14 +148,9 @@ jalan+"%0A"+
 
 var pesan=
 "Halo, saya sudah melakukan pemesanan%0A%0A"+
-"*Nama Lengkap:* "+nama+"%0A"+
-"*No. WA Aktif:* "+wa+"%0A%0A"+
+"*Nama Lengkap:* "+nama+"%0A%0A"+
 "*Alamat Pengiriman:*%0A"+
-alamat+"%0A"+
-"Kelurahan: "+kel+"%0A"+
-"Kecamatan: "+kec+"%0A"+
-"Kab/Kota: "+kota+"%0A"+
-"Provinsi: "+prov+"%0A%0A"+
+alamat+","+kel+","+kec+","+kota+","+prov+"%0A%0A"+
 "*Detail Produk:*%0A"+
 "- "+produk+" x"+jumlah+"%0A%0A"+
 "📦 *Metode Pembayaran:* "+pembayaran+"%0A"+
