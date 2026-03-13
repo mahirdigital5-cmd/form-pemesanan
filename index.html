@@ -131,7 +131,7 @@ var prov=document.getElementById("provinsi").value;
 
 var catatan=document.getElementById("catatan").value;
 
-if(produk==""||pembayaran==""||nama==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""){
+if(produk==""||pembayaran==""||nama==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""||catatan==""){
 alert("Mohon isi data dengan lengkap ya kak 😊");
 return;
 }
@@ -150,7 +150,7 @@ var pesan=
 "Halo, saya sudah melakukan pemesanan%0A%0A"+
 "*Nama Lengkap:* "+nama+"%0A%0A"+
 "*Alamat Pengiriman:*%0A"+
-alamat+","+kel+","+kec+","+kota+","+prov+"%0A%0A"+
+alamat+","+catatan+","+kel+","+kec+","+kota+","+prov+"%0A%0A"+
 "*Detail Produk:*%0A"+
 "- "+produk+" x"+jumlah+"%0A%0A"+
 "📦 *Metode Pembayaran:* "+pembayaran+"%0A"+
