@@ -127,29 +127,29 @@ Produk yang dipesan
 Lengkapi alamat pengiriman
 </div>
 
-<select id="pembayaran">
+<select id="pembayaran" required>
 <option value="">Metode Pembayaran</option>
 <option value="Cash on Delivery">Cash on Delivery (COD)</option>
 <option value="Transfer Bank">Transfer Bank</option>
 </select>
 
-<input type="text" id="nama" placeholder="Nama Penerima">
+<input type="text" id="nama" placeholder="Nama Penerima" required>
 
-<input type="text" id="jalan" placeholder="Nama Jalan (contoh: JL.Anggrek)">
+<input type="text" id="jalan" placeholder="Nama Jalan (contoh: JL.Anggrek)" required>
 
-<input type="number" id="rt" placeholder="RT (hanya angka)">
+<input type="number" id="rt" placeholder="RT (hanya angka)" required>
 
-<input type="number" id="rumah" placeholder="No Rumah (hanya angka)">
+<input type="number" id="rumah" placeholder="No Rumah (hanya angka)" required>
 
-<input type="text" id="kelurahan" placeholder="Kelurahan / Desa">
+<input type="text" id="kelurahan" placeholder="Kelurahan / Desa" required>
 
-<input type="text" id="kecamatan" placeholder="Kecamatan">
+<input type="text" id="kecamatan" placeholder="Kecamatan" required>
 
-<input type="text" id="kota" placeholder="Kota / Kabupaten">
+<input type="text" id="kota" placeholder="Kota / Kabupaten" required>
 
-<input type="text" id="provinsi" placeholder="Provinsi">
+<input type="text" id="provinsi" placeholder="Provinsi" required>
 
-<textarea id="catatan" placeholder="Catatan Rumah / Patokan"></textarea>
+<textarea id="catatan" placeholder="Catatan Rumah / Patokan" required></textarea>
 
 </div>
 
@@ -169,6 +169,7 @@ alert("Silakan pilih jumlah produk dulu ya");
 return;
 }
 
+var pembayaran=document.getElementById("pembayaran").value;
 var nama=document.getElementById("nama").value;
 var jalan=document.getElementById("jalan").value;
 var rt=document.getElementById("rt").value;
@@ -178,7 +179,11 @@ var kec=document.getElementById("kecamatan").value;
 var kota=document.getElementById("kota").value;
 var prov=document.getElementById("provinsi").value;
 var catatan=document.getElementById("catatan").value;
-var pembayaran=document.getElementById("pembayaran").value;
+
+if(pembayaran=="" || nama=="" || jalan=="" || rt=="" || rumah=="" || kel=="" || kec=="" || kota=="" || prov=="" || catatan==""){
+alert("Mohon lengkapi semua alamat pengiriman ya 😊");
+return;
+}
 
 var alamat=jalan+" RT."+rt+" No."+rumah;
 
