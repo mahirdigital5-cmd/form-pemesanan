@@ -36,16 +36,10 @@ text-align:center;
 margin-bottom:15px;
 }
 
-label{
-margin-top:12px;
-display:block;
-font-weight:bold;
-}
-
 input, select, textarea{
 width:100%;
 padding:16px;
-margin-top:6px;
+margin-top:12px;
 border:1px solid #ddd;
 border-radius:10px;
 font-size:16px;
@@ -81,11 +75,9 @@ font-size:18px;
 📦 Form Pemesanan Tas Travel
 </div>
 
-<label>Jumlah Tas Travel Pink</label>
-<input type="number" id="pink" value="0">
+<input type="number" id="pink" placeholder="Jumlah Tas Travel Pink">
 
-<label>Jumlah Tas Travel Hitam</label>
-<input type="number" id="hitam" value="0">
+<input type="number" id="hitam" placeholder="Jumlah Tas Travel Hitam">
 
 <select id="pembayaran">
 <option value="">Metode Pembayaran</option>
@@ -119,8 +111,8 @@ font-size:18px;
 
 function kirimWA(){
 
-var pink=document.getElementById("pink").value;
-var hitam=document.getElementById("hitam").value;
+var pink=document.getElementById("pink").value || 0;
+var hitam=document.getElementById("hitam").value || 0;
 
 var pembayaran=document.getElementById("pembayaran").value;
 var nama=document.getElementById("nama").value;
@@ -147,12 +139,22 @@ return;
 }
 
 if(pink==0 && hitam==0){
-alert("Silakan pilih minimal 1 produk ya kak 😊");
+alert("Silakan isi jumlah pesanan ya kak 😊");
 return;
 }
 
 var alamat=
 jalan+" RT."+rt+" No."+rumah;
+
+var detail="";
+
+if(pink>0){
+detail+="- Tas Travel Pink x"+pink+"%0A";
+}
+
+if(hitam>0){
+detail+="- Tas Travel Hitam x"+hitam+"%0A";
+}
 
 var pesan=
 "Halo, saya sudah melakukan pemesanan%0A%0A"+
@@ -164,8 +166,7 @@ alamat+", "+catatan+"%0A"+
 "Kota/Kabupaten: "+kota+"%0A"+
 "Provinsi: "+prov+"%0A%0A"+
 "*Detail Produk:*%0A"+
-"- Tas Travel Pink x"+pink+"%0A"+
-"- Tas Travel Hitam x"+hitam+"%0A%0A"+
+detail+"%0A"+
 "📦 *Metode Pembayaran:* "+pembayaran+"%0A"+
 "💰 *Total Harga:* Rp 169.000%0A%0A"+
 "Mohon segera diproses ya 🙏";
