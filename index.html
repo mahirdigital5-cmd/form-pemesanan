@@ -36,30 +36,30 @@ text-align:center;
 margin-bottom:20px;
 }
 
-.section{
+.section-title{
+font-weight:bold;
+margin-bottom:10px;
 margin-top:20px;
 }
 
-.section-title{
-font-weight:bold;
-font-size:16px;
+.product{
+border:1px solid #eee;
+padding:12px;
+border-radius:10px;
 margin-bottom:10px;
 }
 
-.produk-row{
+.product-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:10px;
+margin-top:8px;
 }
 
-.produk-row span{
-font-size:15px;
-}
-
-.produk-row input{
-width:80px;
-padding:10px;
+.product-row select,
+.product-row input{
+width:120px;
+padding:8px;
 border-radius:8px;
 border:1px solid #ddd;
 }
@@ -81,148 +81,4 @@ resize:none;
 
 button{
 margin-top:20px;
-width:100%;
-padding:16px;
-background:#25D366;
-border:none;
-color:white;
-font-weight:bold;
-border-radius:10px;
-cursor:pointer;
-font-size:17px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="box">
-
-<div class="title">
-📦 Form Pemesanan Tas Travel
-</div>
-
-
-<div class="section">
-
-<div class="section-title">Produk yang dipesan</div>
-
-<div class="produk-row">
-<span>Tas Travel Pink</span>
-<input type="number" id="pink" min="0" value="0">
-</div>
-
-<div class="produk-row">
-<span>Tas Travel Hitam</span>
-<input type="number" id="hitam" min="0" value="0">
-</div>
-
-</div>
-
-
-<div class="section">
-
-<div class="section-title">Lengkapi alamat pengiriman</div>
-
-<select id="pembayaran">
-<option value="">Metode Pembayaran</option>
-<option value="Cash on Delivery">Cash on Delivery (COD)</option>
-<option value="Transfer Bank">Transfer Bank</option>
-</select>
-
-<input type="text" id="nama" placeholder="Nama Penerima">
-
-<input type="text" id="jalan" placeholder="Nama Jalan (contoh: JL.Anggrek)">
-
-<input type="number" id="rt" placeholder="RT (hanya angka)">
-
-<input type="number" id="rumah" placeholder="No Rumah (hanya angka)">
-
-<input type="text" id="kelurahan" placeholder="Kelurahan / Desa">
-
-<input type="text" id="kecamatan" placeholder="Kecamatan">
-
-<input type="text" id="kota" placeholder="Kota / Kabupaten">
-
-<input type="text" id="provinsi" placeholder="Provinsi">
-
-<textarea id="catatan" placeholder="Catatan Rumah / Patokan"></textarea>
-
-</div>
-
-<button onclick="kirimWA()">Kirim Pesanan</button>
-
-</div>
-
-
-<script>
-
-function kirimWA(){
-
-var pink=document.getElementById("pink").value;
-var hitam=document.getElementById("hitam").value;
-
-var pembayaran=document.getElementById("pembayaran").value;
-var nama=document.getElementById("nama").value;
-
-var jalan=document.getElementById("jalan").value;
-var rt=document.getElementById("rt").value;
-var rumah=document.getElementById("rumah").value;
-
-var kel=document.getElementById("kelurahan").value;
-var kec=document.getElementById("kecamatan").value;
-var kota=document.getElementById("kota").value;
-var prov=document.getElementById("provinsi").value;
-
-var catatan=document.getElementById("catatan").value;
-
-if(pembayaran==""||nama==""||jalan==""||rt==""||rumah==""||kel==""||kec==""||kota==""||catatan==""){
-alert("Mohon isi data dengan lengkap ya kak 😊");
-return;
-}
-
-if(pink==0 && hitam==0){
-alert("Silakan pilih jumlah produk ya kak 😊");
-return;
-}
-
-var alamat=
-jalan+" RT."+rt+" No."+rumah;
-
-var detail="";
-
-if(pink>0){
-detail+="- Tas Travel Pink x"+pink+"%0A";
-}
-
-if(hitam>0){
-detail+="- Tas Travel Hitam x"+hitam+"%0A";
-}
-
-var pesan=
-"Halo, saya sudah melakukan pemesanan%0A%0A"+
-"*Nama Lengkap:* "+nama+"%0A%0A"+
-"*Alamat Pengiriman:*%0A"+
-alamat+", "+catatan+"%0A"+
-"Kelurahan: "+kel+"%0A"+
-"Kecamatan: "+kec+"%0A"+
-"Kota/Kabupaten: "+kota+"%0A"+
-"Provinsi: "+prov+"%0A%0A"+
-"*Detail Produk:*%0A"+
-detail+"%0A"+
-"📦 *Metode Pembayaran:* "+pembayaran+"%0A"+
-"💰 *Total Harga:* Rp 169.000%0A%0A"+
-"Mohon segera diproses ya 🙏";
-
-var url="https://api.whatsapp.com/send?phone=15558770694&text="+pesan;
-
-window.location.href=url;
-
-}
-
-</script>
-
-</body>
-</html>
 ```
