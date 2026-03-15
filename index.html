@@ -22,7 +22,7 @@ padding:20px;
 
 .box{
 background:white;
-padding:30px 24px;
+padding:28px;
 border-radius:16px;
 box-shadow:0 12px 35px rgba(0,0,0,0.7);
 width:100%;
@@ -30,19 +30,47 @@ max-width:480px;
 }
 
 .title{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 text-align:center;
-margin-bottom:15px;
+margin-bottom:20px;
+}
+
+.section{
+margin-top:20px;
+}
+
+.section-title{
+font-weight:bold;
+font-size:16px;
+margin-bottom:10px;
+}
+
+.produk-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.produk-row span{
+font-size:15px;
+}
+
+.produk-row input{
+width:80px;
+padding:10px;
+border-radius:8px;
+border:1px solid #ddd;
 }
 
 input, select, textarea{
 width:100%;
-padding:16px;
-margin-top:12px;
+padding:14px;
+margin-top:10px;
 border:1px solid #ddd;
 border-radius:10px;
-font-size:16px;
+font-size:15px;
 box-sizing:border-box;
 }
 
@@ -52,16 +80,16 @@ resize:none;
 }
 
 button{
-margin-top:22px;
+margin-top:20px;
 width:100%;
-padding:18px;
+padding:16px;
 background:#25D366;
 border:none;
 color:white;
 font-weight:bold;
 border-radius:10px;
 cursor:pointer;
-font-size:18px;
+font-size:17px;
 }
 
 </style>
@@ -75,9 +103,27 @@ font-size:18px;
 📦 Form Pemesanan Tas Travel
 </div>
 
-<input type="number" id="pink" placeholder="Jumlah Tas Travel Pink">
 
-<input type="number" id="hitam" placeholder="Jumlah Tas Travel Hitam">
+<div class="section">
+
+<div class="section-title">Produk yang dipesan</div>
+
+<div class="produk-row">
+<span>Tas Travel Pink</span>
+<input type="number" id="pink" min="0" value="0">
+</div>
+
+<div class="produk-row">
+<span>Tas Travel Hitam</span>
+<input type="number" id="hitam" min="0" value="0">
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">Lengkapi alamat pengiriman</div>
 
 <select id="pembayaran">
 <option value="">Metode Pembayaran</option>
@@ -103,16 +149,19 @@ font-size:18px;
 
 <textarea id="catatan" placeholder="Catatan Rumah / Patokan"></textarea>
 
+</div>
+
 <button onclick="kirimWA()">Kirim Pesanan</button>
 
 </div>
+
 
 <script>
 
 function kirimWA(){
 
-var pink=document.getElementById("pink").value || 0;
-var hitam=document.getElementById("hitam").value || 0;
+var pink=document.getElementById("pink").value;
+var hitam=document.getElementById("hitam").value;
 
 var pembayaran=document.getElementById("pembayaran").value;
 var nama=document.getElementById("nama").value;
@@ -133,13 +182,8 @@ alert("Mohon isi data dengan lengkap ya kak 😊");
 return;
 }
 
-if(isNaN(rt) || isNaN(rumah)){
-alert("RT dan No Rumah harus berupa angka ya kak");
-return;
-}
-
 if(pink==0 && hitam==0){
-alert("Silakan isi jumlah pesanan ya kak 😊");
+alert("Silakan pilih jumlah produk ya kak 😊");
 return;
 }
 
