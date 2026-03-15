@@ -170,6 +170,12 @@ return;
 }
 
 var pembayaran=document.getElementById("pembayaran").value;
+
+if(pembayaran==""){
+alert("Tolong pilih metode pembayaran ya 😊");
+return;
+}
+
 var nama=document.getElementById("nama").value;
 var jalan=document.getElementById("jalan").value;
 var rt=document.getElementById("rt").value;
@@ -180,7 +186,7 @@ var kota=document.getElementById("kota").value;
 var prov=document.getElementById("provinsi").value;
 var catatan=document.getElementById("catatan").value;
 
-if(pembayaran=="" || nama=="" || jalan=="" || rt=="" || rumah=="" || kel=="" || kec=="" || kota=="" || prov=="" || catatan==""){
+if(nama=="" || jalan=="" || rt=="" || rumah=="" || kel=="" || kec=="" || kota=="" || prov=="" || catatan==""){
 alert("Mohon lengkapi semua alamat pengiriman ya 😊");
 return;
 }
