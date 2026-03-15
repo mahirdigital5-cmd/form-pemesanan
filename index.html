@@ -198,16 +198,21 @@ detail+="Tas Travel Hitam x"+hitam+"%0A";
 }
 
 var pesan=
-"Halo, saya ingin memesan:%0A%0A"+
-detail+"%0A"+
-"Nama: "+nama+"%0A"+
-"Alamat: "+alamat+"%0A"+
-"Kelurahan: "+kel+"%0A"+
-"Kecamatan: "+kec+"%0A"+
-"Kota: "+kota+"%0A"+
-"Provinsi: "+prov+"%0A"+
-"Catatan: "+catatan+"%0A%0A"+
-"Metode Pembayaran: "+pembayaran;
+"Halo, saya sudah melakukan pemesanan.%0A%0A"+ 
+  
+  "**Nama Lengkap:**%0A"+ nama+"%0A%0A"+ 
+  "**Alamat Pengiriman:**%0A"+ 
+  alamat+"%0A"+ "("+catatan+")%0A"+ 
+  "Kelurahan: "+kel+"%0A"+ 
+  "Kecamatan: "+kec+"%0A"+ 
+  "Kota: "+kota+"%0A"+ 
+  "Provinsi: "+prov+"%0A%0A"+ 
+  
+  "**Detail Pesanan:**%0A%0A"+ detail+"%0A"+ 
+  "**Metode Pembayaran:** "+pembayaran+"%0A"+ 
+  "**Total Harga:** Rp169.000%0A%0A"+
+
+  "Mohon segera diproses ya. Terima kasih 🙏";
 
 var url="https://api.whatsapp.com/send?phone=15558770694&text="+pesan;
 
