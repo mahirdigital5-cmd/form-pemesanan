@@ -11,22 +11,22 @@
 
 body{
 font-family:Arial;
-background:#000;
+background:#f4f4f4;
 display:flex;
 justify-content:center;
-align-items:center;
+align-items:flex-start;
 min-height:100vh;
 margin:0;
-padding:20px;
+padding:30px 15px;
 }
 
 .box{
 background:white;
-padding:28px;
-border-radius:16px;
-box-shadow:0 12px 35px rgba(0,0,0,0.7);
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 width:100%;
-max-width:480px;
+max-width:450px;
 }
 
 .title{
@@ -36,41 +36,40 @@ text-align:center;
 margin-bottom:20px;
 }
 
-.section-title{
-font-weight:bold;
-margin-bottom:10px;
+.section{
 margin-top:20px;
 }
 
-.product{
-border:1px solid #eee;
-padding:12px;
-border-radius:10px;
+.section-title{
+font-weight:bold;
 margin-bottom:10px;
 }
 
-.product-row{
+.product{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-top:8px;
+border:1px solid #eee;
+padding:10px;
+border-radius:8px;
+margin-bottom:8px;
 }
 
-.product-row select,
-.product-row input{
-width:120px;
+.product input{
+width:60px;
 padding:8px;
-border-radius:8px;
-border:1px solid #ddd;
+border-radius:6px;
+border:1px solid #ccc;
+text-align:center;
 }
 
 input, select, textarea{
 width:100%;
-padding:14px;
+padding:12px;
 margin-top:10px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:15px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:14px;
 box-sizing:border-box;
 }
 
@@ -81,4 +80,138 @@ resize:none;
 
 button{
 margin-top:20px;
+width:100%;
+padding:14px;
+background:#25D366;
+border:none;
+color:white;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="title">
+Form Pemesanan Tas Travel
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Produk yang dipesan
+</div>
+
+<div class="product">
+<span>Tas Travel Pink</span>
+<input type="number" id="pink" value="0" min="0">
+</div>
+
+<div class="product">
+<span>Tas Travel Hitam</span>
+<input type="number" id="hitam" value="0" min="0">
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">
+Lengkapi alamat pengiriman
+</div>
+
+<select id="pembayaran">
+<option value="">Metode Pembayaran</option>
+<option value="Cash on Delivery">Cash on Delivery (COD)</option>
+<option value="Transfer Bank">Transfer Bank</option>
+</select>
+
+<input type="text" id="nama" placeholder="Nama Penerima">
+
+<input type="text" id="jalan" placeholder="Nama Jalan (contoh: JL.Anggrek)">
+
+<input type="number" id="rt" placeholder="RT (hanya angka)">
+
+<input type="number" id="rumah" placeholder="No Rumah (hanya angka)">
+
+<input type="text" id="kelurahan" placeholder="Kelurahan / Desa">
+
+<input type="text" id="kecamatan" placeholder="Kecamatan">
+
+<input type="text" id="kota" placeholder="Kota / Kabupaten">
+
+<input type="text" id="provinsi" placeholder="Provinsi">
+
+<textarea id="catatan" placeholder="Catatan Rumah / Patokan"></textarea>
+
+</div>
+
+<button onclick="kirimWA()">Kirim Pesanan</button>
+
+</div>
+
+<script>
+
+function kirimWA(){
+
+var pink=document.getElementById("pink").value;
+var hitam=document.getElementById("hitam").value;
+
+if(pink==0 && hitam==0){
+alert("Silakan pilih jumlah produk dulu ya");
+return;
+}
+
+var nama=document.getElementById("nama").value;
+var jalan=document.getElementById("jalan").value;
+var rt=document.getElementById("rt").value;
+var rumah=document.getElementById("rumah").value;
+var kel=document.getElementById("kelurahan").value;
+var kec=document.getElementById("kecamatan").value;
+var kota=document.getElementById("kota").value;
+var prov=document.getElementById("provinsi").value;
+var catatan=document.getElementById("catatan").value;
+var pembayaran=document.getElementById("pembayaran").value;
+
+var alamat=jalan+" RT."+rt+" No."+rumah;
+
+var detail="";
+
+if(pink>0){
+detail+="Tas Travel Pink x"+pink+"%0A";
+}
+
+if(hitam>0){
+detail+="Tas Travel Hitam x"+hitam+"%0A";
+}
+
+var pesan=
+"Halo, saya ingin memesan:%0A%0A"+
+detail+"%0A"+
+"Nama: "+nama+"%0A"+
+"Alamat: "+alamat+"%0A"+
+"Kelurahan: "+kel+"%0A"+
+"Kecamatan: "+kec+"%0A"+
+"Kota: "+kota+"%0A"+
+"Provinsi: "+prov+"%0A"+
+"Catatan: "+catatan+"%0A%0A"+
+"Metode Pembayaran: "+pembayaran;
+
+var url="https://api.whatsapp.com/send?phone=15558770694&text="+pesan;
+
+window.location.href=url;
+
+}
+
+</script>
+
+</body>
+</html>
 ```
